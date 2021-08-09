@@ -29,6 +29,9 @@ app.post('/api/forma', (req, res) => {
 	oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
 	const accessToken = oAuth2Client.getAccessToken();
+
+
+	
 	let smtpTransport = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -38,8 +41,11 @@ app.post('/api/forma', (req, res) => {
 			clientSecret: process.env.CLIENT_SECRET,
 			refreshToken: process.env.REFRESH_TOKEN,
 			accessToken: accessToken,
+			expires: 1484314697598
 		},
 	});
+
+
 	let mailOptions = {
 		from: data.email,
 		to: 'kekuroso84@gmail.com',
@@ -49,6 +55,8 @@ app.post('/api/forma', (req, res) => {
 		       Email: ${data.email}</li></ul>
 		       <h3>Message</h3>
 		       <p> ${data.message}</p> </li> `,
+
+
 	};
 
 	smtpTransport.sendMail(mailOptions, (error) => {
@@ -69,76 +77,4 @@ app.listen(PORT, () => {
 
 module.exports = app;
 
-// /* jshint esversion: 6 */
-// const express = require('express');
-// const bodyparse = require('body-parser');
-// const nodemailer = require('nodemailer');
-// const cors = require('cors');
-// const bodyparser = require('body-parser');
-// require('dotenv').config();
-// const path = require('path');
-// const app = express();
-// const { google } = require('googleapis');
-// const OAuth2 = google.auth.OAuth2;
 
-// app.use(express.static(path.join(__dirname, '../frontend/build')));
-// app.use(bodyparse.urlencoded({ extended: true }));
-// app.use(bodyparser.json());
-// app.use(cors());
-
-// app.get('/*', function (req, res) {
-// 	res
-// 		.status(200)
-// 		.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
-// });
-
-// app.post('/api/forma', (req, res) => {
-// 	let data = req.body;
-// 	const oAuth2Client = new google.auth.OAuth2(
-// 		process.env.CLIENT_ID,
-// 		process.env.CLIENT_SECRET,
-// 		process.env.REFRESH_TOKEN,
-
-// 	);
-// 	oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
-
-// 	const accessToken = oAuth2Client.getAccessToken();
-
-// 	let smtpTransport = nodemailer.createTransport({
-// 		service: 'gmail',
-// 		auth: {
-// 			type: 'OAuth2',
-// 			user: process.env.EMAIL,
-// 			scope : "https://www.googleapis.com/auth/gmail.send",
-// 			clientId: process.env.CLIENT_ID,
-// 			clientSecret: process.env.CLIENT_SECRET,
-// 			refreshToken: process.env.REFRESH_TOKEN,
-// 			accessToken: accessToken,
-// 		},
-// 	});
-// 	let mailOptions = {
-// 		from: data.email,
-// 		to: 'kekuroso84@gmail.com',
-// 		subject: data.subject,
-// 		html: `<h3>Informations</h3> <ul>
-//        <li> Name: ${data.name} <li>
-//        Email: ${data.email}</li></ul>
-//        <h3>Message</h3>
-//        <p> ${data.message}</p> </li> `,
-// 	};
-
-// 	smtpTransport.sendMail(mailOptions, (error) => {
-// 		if (error) {
-// 			res.send(error);
-// 			console.log(res.send(error));
-// 		} else {
-// 			res.send('Succes');
-// 		}
-// 		smtpTransport.close();
-// 	});
-// });
-// const hostname = 'http://localhost';
-// const PORT = process.env.PORT || 8080;
-// app.listen(PORT, function () {
-// 	console.log(`Server is running on port ${hostname}:${PORT}`);
-// });

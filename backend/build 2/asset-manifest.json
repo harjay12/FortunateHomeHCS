@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.8fa25fe1.chunk.css",
+    "main.js": "/static/js/main.c7d77efa.chunk.js",
+    "main.js.map": "/static/js/main.c7d77efa.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.248907bc.js",
+    "runtime-main.js.map": "/static/js/runtime-main.248907bc.js.map",
+    "static/js/2.758bf37b.chunk.js": "/static/js/2.758bf37b.chunk.js",
+    "static/js/2.758bf37b.chunk.js.map": "/static/js/2.758bf37b.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.8fa25fe1.chunk.css.map": "/static/css/main.8fa25fe1.chunk.css.map",
+    "static/js/2.758bf37b.chunk.js.LICENSE.txt": "/static/js/2.758bf37b.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/Newjersey.ede25eb7.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.248907bc.js",
+    "static/js/2.758bf37b.chunk.js",
+    "static/css/main.8fa25fe1.chunk.css",
+    "static/js/main.c7d77efa.chunk.js"
+  ]
+}
